@@ -10,11 +10,16 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 public class JdbcUtils {
 
 	private static DataSource datasource = new ComboPooledDataSource();
+	private static DataSource datasource_back = new ComboPooledDataSource("back");
 	private static ThreadLocal<Connection> local = new ThreadLocal<Connection>();
 	
 	public static DataSource getDataSource(){
 		return datasource;
 	}
+	public static DataSource getDataSource_back(){
+		return datasource_back;
+	}
+	
 	public static Connection getConnection() throws SQLException{
 		Connection conn = local.get();
 		if(conn==null){

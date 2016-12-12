@@ -9,12 +9,14 @@ import java.util.UUID;
 
 import dao.BookDao;
 import dao.CategoryDao;
+import dao.DbbackDao;
 import dao.OrderDao;
 import dao.UserDao;
 import domain.Book;
 import domain.Cart;
 import domain.CartItem;
 import domain.Category;
+import domain.Dbback;
 import domain.Order;
 import domain.OrderItem;
 import domain.PageBean;
@@ -28,7 +30,7 @@ public class BusinessServiceImpl {
 	private UserDao udao = DaoFactory.getDao(UserDao.class);
 	private OrderDao odao = DaoFactory.getDao(OrderDao.class);
 	private CategoryDao cdao = DaoFactory.getDao(CategoryDao.class);
-
+	private DbbackDao ddao = DaoFactory.getDao(DbbackDao.class);
 	/****************************************
 	 * 
 	 * 分类相关的服务
@@ -137,5 +139,13 @@ public class BusinessServiceImpl {
 	public List<Order> findOrderbyUser(String id){
 		return odao.findbyUser(id);
 	}
-	
+	public void addDbback(Dbback back){
+		ddao.add(back);
+	}
+	public List getAllDbback(){
+		return ddao.list();
+	}
+	public Dbback findDbback(String id){
+		return ddao.find(id);
+	}
 }

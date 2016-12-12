@@ -11,6 +11,18 @@
 		<property name="minPoolSize">5</property>
 		<property name="maxStatements">200</property>
 	</default-config>
+
+	<named-config name="back">
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:mysql://localhost:3306/mybookstore_back</property>
+		<property name="user">root</property>
+		<property name="password">root</property>
+		
+		<property name="acquireIncrement">1</property>
+		<property name="initialPoolSize">1</property>
+		<property name="minPoolSize">1</property>
+		<property name="maxPoolSize">1</property>
+	</named-config>
 	
 	<named-config name="mysql">
 		<property name="acquireIncrement">50</property>

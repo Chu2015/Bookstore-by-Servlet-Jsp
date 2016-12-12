@@ -62,6 +62,11 @@
     <servlet-name>OrderServlet1</servlet-name>
     <servlet-class>web.manager.OrderServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>DbServlet</servlet-name>
+    <servlet-class>web.manager.DbServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -100,6 +105,10 @@
   <servlet-mapping>
     <servlet-name>OrderServlet1</servlet-name>
     <url-pattern>/manager/OrderServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DbServlet</servlet-name>
+    <url-pattern>/manager/DbServlet</url-pattern>
   </servlet-mapping>
   
 

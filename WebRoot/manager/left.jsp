@@ -54,6 +54,17 @@
     	
     	<br/><br/>
     	
+    	<li>
+    		<a href="#" onclick="test(children[0])">订单管理
+    			<div>
+	    			<a href="${pageContext.request.contextPath }/manager/dbback.jsp"  target="right">数据库备份</a><br/>
+	    			<a href="${pageContext.request.contextPath }/manager/DbServlet?method=list"  target="right">数据库恢复</a><br/>
+    			</div>
+    		</a>
+    	</li>
+    	
+    	<br/><br/>
+    	
     </ul>
   </body>
 </html>
