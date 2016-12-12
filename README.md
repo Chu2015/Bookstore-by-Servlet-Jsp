@@ -21,55 +21,55 @@ a web project using Servlet and Jsp
 		create database bookstore;
 		use bookstore;
 		create table user
-(
-	id varchar(40) primary key,
-	username varchar(40) not null unique,
-	password varchar(40) not null,
-	phone varchar(40) not null,
-	cellphone varchar(40) not null,
-	email varchar(40) not null unique,
-	address varchar(225) not null
-);
+		(
+			id varchar(40) primary key,
+			username varchar(40) not null unique,
+			password varchar(40) not null,
+			phone varchar(40) not null,
+			cellphone varchar(40) not null,
+			email varchar(40) not null unique,
+			address varchar(225) not null
+		);
 
-create table category
-(
-	id varchar(40) primary key,
-	name varchar(40) not null unique,
-	description varchar(255)
-);
+		create table category
+		(
+			id varchar(40) primary key,
+			name varchar(40) not null unique,
+			description varchar(255)
+		);
 
-create table book
-(
-	id varchar(40) primary key,
-	name varchar(40) not null unique,
-	price decimal(8,2) not null,
-	author varchar(40) not null,
-	image varchar(225) not null,
-	description varchar(40),
-	category_id varchar(40),
-	constraint category_id_FK foreign key(category_id) references category(id)
-);
+		create table book
+		(
+			id varchar(40) primary key,
+			name varchar(40) not null unique,
+			price decimal(8,2) not null,
+			author varchar(40) not null,
+			image varchar(225) not null,
+			description varchar(40),
+			category_id varchar(40),
+			constraint category_id_FK foreign key(category_id) references category(id)
+		);
 
-create table orders
-(
-	id varchar(40) primary key,
-	ordertime datetime not null,
-	state boolean not null,
-	price decimal(8,2) not null,
-	user_id varchar(40),
-	constraint user_id_FK foreign key(user_id) references user(id)
-);
+		create table orders
+		(
+			id varchar(40) primary key,
+			ordertime datetime not null,
+			state boolean not null,
+			price decimal(8,2) not null,
+			user_id varchar(40),
+			constraint user_id_FK foreign key(user_id) references user(id)
+		);
 
-create table orderitem
-(
-	id varchar(40) primary key,
-	quantity int not null,
-	price decimal(8,2) not null,
-	order_id varchar(40),
-	book_id varchar(40),
-	constraint order_id_FK foreign key(order_id) references orders(id),
-	constraint book_id_FK foreign key(book_id) references book(id)
-);
+		create table orderitem
+		(
+			id varchar(40) primary key,
+			quantity int not null,
+			price decimal(8,2) not null,
+			order_id varchar(40),
+			book_id varchar(40),
+			constraint order_id_FK foreign key(order_id) references orders(id),
+			constraint book_id_FK foreign key(book_id) references book(id)
+		);
 		4.创建一些全局的工具类和过滤器
 		JdbcUtils
 		WebUtils
