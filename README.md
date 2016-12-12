@@ -9,7 +9,7 @@ a web project using Servlet and Jsp
 	1.2 创建组织程序的包
 		domain
 		dao
-	  dao.impl
+	        dao.impl
 		service
 		web.controller
 		utils
