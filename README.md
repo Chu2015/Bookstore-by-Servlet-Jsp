@@ -2,6 +2,7 @@
 a web project using Servlet and Jsp
 
 1.搭建环境
+	
 	1.1 导开发包
 		mysql驱动，dbutils框架，c3p0连接池，beanutils框架，log4j，commons fileupload，commons io，jstl开发包
 	
@@ -80,11 +81,12 @@ a web project using Servlet and Jsp
 		DaoFactory
 
 2.设计实体
-		Category
+
+			Category
 			private String id;
 			private String name;
 			private String description;
-		Book 
+			Book 
 			private String id;
 			private String name;
 			private double price;
@@ -93,7 +95,7 @@ a web project using Servlet and Jsp
 			private String description;
 			private Category category;
 
-		Order
+			Order
 			private String id;
 			private Date ordertime;  //下单时间
 			private boolean state;   //订单状态
@@ -102,7 +104,7 @@ a web project using Servlet and Jsp
 			private User user;    //记住下单人
 			private Set orderitems;   //记住订单所有的订单项 
 
-		OrderItem
+			OrderItem
 			private String id;
 			private int quantity;
 			private double price;
@@ -110,7 +112,7 @@ a web project using Servlet and Jsp
 
 
 
-		User
+			User
 			private String id;
 			private String username;
 			private String password;
