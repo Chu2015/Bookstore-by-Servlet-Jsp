@@ -1,5 +1,6 @@
 # Bookstore-by-Servlet-Jsp
 a web project using Servlet and Jsp
+
 1.搭建环境
 	1.1 导开发包
 		mysql驱动，dbutils框架，c3p0连接池，beanutils框架，log4j，commons fileupload，commons io，jstl开发包
@@ -79,44 +80,44 @@ a web project using Servlet and Jsp
 		DaoFactory
 
 2.设计实体
-	Category
-		private String id;
-		private String name;
-		private String description;
-	Book 
-		private String id;
-		private String name;
-		private double price;
-		private String author;
-		private String image;  //记住书的图片的位置
-		private String description;
-		private Category category;
-    
-	Order
-		private String id;
-		private Date ordertime;  //下单时间
-		private boolean state;   //订单状态
-		private double price;    //订单总价
-		
-		private User user;    //记住下单人
-		private Set orderitems;   //记住订单所有的订单项 
+		Category
+			private String id;
+			private String name;
+			private String description;
+		Book 
+			private String id;
+			private String name;
+			private double price;
+			private String author;
+			private String image;  //记住书的图片的位置
+			private String description;
+			private Category category;
 
-	OrderItem
-		private String id;
-		private int quantity;
-		private double price;
-		private Book book;   //记住订单项代表的是哪本书
-		
-	
+		Order
+			private String id;
+			private Date ordertime;  //下单时间
+			private boolean state;   //订单状态
+			private double price;    //订单总价
 
-	User
-		private String id;
-		private String username;
-		private String password;
-		private String phone;
-		private String cellphone;
-		private String email;
-		private String address;
+			private User user;    //记住下单人
+			private Set orderitems;   //记住订单所有的订单项 
+
+		OrderItem
+			private String id;
+			private int quantity;
+			private double price;
+			private Book book;   //记住订单项代表的是哪本书
+
+
+
+		User
+			private String id;
+			private String username;
+			private String password;
+			private String phone;
+			private String cellphone;
+			private String email;
+			private String address;
 
 4.写dao
 
@@ -125,16 +126,14 @@ a web project using Servlet and Jsp
 6.做web层	
 		
 //为保存备份信息，新建一个库
-create database mybookstore_back;
-use mybookstore_back;
 
-create table dbback
-(
-	id varchar(40) primary key,
-	filename varchar(155) not null,
-	backtime datetime not null,
-	description varchar(255)
-);
+		create table dbback
+		(
+			id varchar(40) primary key,
+			filename varchar(155) not null,
+			backtime datetime not null,
+			description varchar(255)
+		);
 
 		
 		
