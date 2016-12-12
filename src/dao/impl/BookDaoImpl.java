@@ -27,21 +27,6 @@ public class BookDaoImpl implements BookDao {
 		}
 	}
 	
-//	public Book find(String id){
-//		try{
-//			Connection conn = JdbcUtils.getConnection();
-//			QueryRunner qr = new QueryRunner();
-//			String sql = "select * from book where id=?";
-//			Book book = (Book) qr.query(conn, sql, id, new BeanHandler(Book.class));
-//			
-//			sql="select category.* from book,category where book_id=? and book.catagory_id=category.id";
-//			Category c = (Category) qr.query(conn, sql, id, new BeanHandler(Category.class));
-//			book.setCategory(c);
-//			return book;
-//		}catch(Exception e){
-//			throw new RuntimeException(e);
-//		}
-//	}
 	public Book find(String id){
 		try{
 			Connection conn = JdbcUtils.getConnection();
