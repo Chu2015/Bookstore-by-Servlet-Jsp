@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import service.BusinessService;
+import utils.Permission;
 import dao.BookDao;
 import dao.CategoryDao;
 import dao.DbbackDao;
@@ -25,7 +27,7 @@ import domain.QueryResult;
 import domain.User;
 import factory.DaoFactory;
 
-public class BusinessServiceImpl {
+public class BusinessServiceImpl implements BusinessService {
 	private BookDao bdao = DaoFactory.getDao(BookDao.class);
 	private UserDao udao = DaoFactory.getDao(UserDao.class);
 	private OrderDao odao = DaoFactory.getDao(OrderDao.class);
@@ -36,10 +38,12 @@ public class BusinessServiceImpl {
 	 * 分类相关的服务
 	 * 
 	 **************************************/
+	@Permission("添加分类")
 	public void addCategory(Category c){
 		cdao.add(c);
 	}
-
+	
+	@Permission("查看分类")
 	public Category findCategory(String id){
 		return cdao.find(id);
 	}
@@ -139,6 +143,7 @@ public class BusinessServiceImpl {
 	public List<Order> findOrderbyUser(String id){
 		return odao.findbyUser(id);
 	}
+	//数据库的备份
 	public void addDbback(Dbback back){
 		ddao.add(back);
 	}
@@ -147,5 +152,9 @@ public class BusinessServiceImpl {
 	}
 	public Dbback findDbback(String id){
 		return ddao.find(id);
+	}
+	//权限管理
+	public List getUserAllPrivilege(User user) {
+		return udao.getAllPrivilege(user);
 	}
 }

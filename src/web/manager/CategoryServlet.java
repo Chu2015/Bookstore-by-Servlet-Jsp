@@ -11,10 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import domain.Category;
+import domain.User;
+import factory.ServiceFactory;
+import service.BusinessService;
 import service.impl.BusinessServiceImpl;
+import utils.WebUtils;
 
 public class CategoryServlet extends HttpServlet {
-	BusinessServiceImpl service = new BusinessServiceImpl();
+	BusinessService service = new BusinessServiceImpl();
+	
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String method = request.getParameter("method");
@@ -28,14 +34,19 @@ public class CategoryServlet extends HttpServlet {
 	}
 	public void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		try{
-			Category category = new Category();
-			category.setName(request.getParameter("name"));
-			category.setDescription(request.getParameter("description"));
+			User user = (User) request.getSession().getAttribute("user");
+			BusinessService service = ServiceFactory.getInstance().getServiceProxy(user);
+			Category category = WebUtils.request2bean(request, Category.class);
 			category.setId(UUID.randomUUID().toString());
 			service.addCategory(category);
 			request.setAttribute("message", "添加分类成功");
 		}catch(Exception e){
-			request.setAttribute("message", "添加分类失败");
+			if(e instanceof SecurityException){
+				request.setAttribute("message",e.getMessage());
+			}else{
+				e.printStackTrace();
+				request.setAttribute("message", "添加分类失败");
+			}
 		}
 			request.getRequestDispatcher("/message.jsp").forward(request, response);
 	}

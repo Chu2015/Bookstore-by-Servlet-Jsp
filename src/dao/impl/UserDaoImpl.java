@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import utils.JdbcUtils;
 import dao.UserDao;
 import domain.Order;
+import domain.Privilege;
 import domain.User;
 
 public class UserDaoImpl implements UserDao {
@@ -46,6 +48,18 @@ public class UserDaoImpl implements UserDao {
 			Object[] params={username,password};
 			User user = (User) qr.query(conn, sql, params, new BeanHandler(User.class));
 			return user;
+		}catch(Exception e){
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public List<Privilege> getAllPrivilege(User user){
+		try{
+			Connection conn = JdbcUtils.getConnection();
+			QueryRunner qr = new QueryRunner();
+			String sql = "select p.* from user_privilege up,privilege p where up.user_id=? and p.id=up.privilege_id ";
+			List list = (List) qr.query(conn, sql, user.getId(), new BeanListHandler(Privilege.class));
+			return list;
 		}catch(Exception e){
 			throw new RuntimeException(e);
 		}

@@ -1,5 +1,8 @@
 package dao;
 
+import java.util.List;
+
+import domain.Privilege;
 import domain.User;
 
 public interface UserDao {
@@ -10,4 +13,5 @@ public interface UserDao {
 
 	User find(String username, String password);
 
+	List<Privilege> getAllPrivilege(User user);
 }
