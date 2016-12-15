@@ -1,6 +1,6 @@
 # Bookstore-by-Servlet-Jsp
 a web project using Servlet and Jsp
-通过servlet和jsp技术创建一个购买书籍网站，可供用户购买书籍，并且提供管理图书及用户订单的功能。
+通过servlet和jsp技术创建一个购买书籍网站，可供用户购买书籍，并且提供后台管理图书和用户订单的功能。
 
 1.搭建环境
 	
